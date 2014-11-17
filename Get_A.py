@@ -1,17 +1,31 @@
 from tkinter import *
 
 root = Tk()
-root.title('Get A')
-root.geometry('600x700')
+root.geometry("800x600")
+root.title('Project PSIT \"Get A\"')
 
-def new_project(root):
-    w = Frame(root, width = 200, height = 400, bg = 'Blue')
-    w.grid(row=0,column=0)
-        
-    new = Button(w, text=('clickMe'))
-    new.pack(anchor = NW, pady = 180, padx = 100)
+class Subject():
+    def __init__(self, root):
+        self.root = root
 
-Frame(width = 400, height = 400, bg = 'Red').grid(row=0,column=1)
-Frame(width = 600, height = 300, bg = 'Yellow').grid(row=1,columnspan=2)
+    def print_box(self):
+        top = Toplevel()
+        self.e = Entry(top)
+        self.e.pack()
 
-new_project(root)
+        button_ok = Button(top, text='OK', command=self.add_subject)
+        button_ok.pack()
+    def add_subject(self):
+        print (self.e.get())
+        self.b = Button(self.root, text=self.e.get())
+        self.b.pack()
+        """button_subject = Button(root, text='e')
+        button_subject.pack()
+        top.destroy()"""
+
+
+    
+s = Subject(root)
+button_test = Button(root, text='New Subject', command = s.print_box)
+button_test.pack()
+# button_test.grid(row = 0, column =0)
